@@ -64,7 +64,7 @@ public class ContactClassificationTypeController {
 		if( newContactClassificationType != null ) {
 			String requestURI = request.getRequestURI();
 			try {
-				return ResponseEntity.created(new URI(requestURI + "/" + newContactClassificationType.getContactClassificationTypeId())).build();		
+				return ResponseEntity.created(new URI(requestURI + "/" + newContactClassificationType.getClassificationTypeId())).build();		
 			} catch( Exception e ) {
 				return ResponseEntity.badRequest().build();
 			}
@@ -109,7 +109,7 @@ public class ContactClassificationTypeController {
 	
 	private Resource<ContactClassificationType> getContactClassificationTypeResource(ContactClassificationType a) {
 	    Resource<ContactClassificationType> resource = new Resource<ContactClassificationType>(a);
-	    resource.add(linkTo(methodOn(ContactClassificationTypeController.class).getContactClassificationType(a.getContactClassificationTypeId())).withSelfRel());
+	    resource.add(linkTo(methodOn(ContactClassificationTypeController.class).getContactClassificationType(a.getClassificationTypeId())).withSelfRel());
 	    return resource;
 	}
 

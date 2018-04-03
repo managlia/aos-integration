@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.CompanyUrlTypeRepository;
+import com.yeti.core.repository.types.CompanyUrlTypeRepository;
 import com.yeti.model.company.CompanyUrlType;
 import com.yeti.model.util.Batch;
 

@@ -64,7 +64,7 @@ public class CompanyUrlTypeController {
 		if( newCompanyUrlType != null ) {
 			String requestURI = request.getRequestURI();
 			try {
-				return ResponseEntity.created(new URI(requestURI + "/" + newCompanyUrlType.getCompanyUrlTypeId())).build();		
+				return ResponseEntity.created(new URI(requestURI + "/" + newCompanyUrlType.getUrlTypeId())).build();		
 			} catch( Exception e ) {
 				return ResponseEntity.badRequest().build();
 			}
@@ -109,7 +109,7 @@ public class CompanyUrlTypeController {
 	
 	private Resource<CompanyUrlType> getCompanyUrlTypeResource(CompanyUrlType a) {
 	    Resource<CompanyUrlType> resource = new Resource<CompanyUrlType>(a);
-	    resource.add(linkTo(methodOn(CompanyUrlTypeController.class).getCompanyUrlType(a.getCompanyUrlTypeId())).withSelfRel());
+	    resource.add(linkTo(methodOn(CompanyUrlTypeController.class).getCompanyUrlType(a.getUrlTypeId())).withSelfRel());
 	    return resource;
 	}
 

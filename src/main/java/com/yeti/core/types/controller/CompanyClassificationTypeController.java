@@ -64,7 +64,7 @@ public class CompanyClassificationTypeController {
 		if( newCompanyClassificationType != null ) {
 			String requestURI = request.getRequestURI();
 			try {
-				return ResponseEntity.created(new URI(requestURI + "/" + newCompanyClassificationType.getCompanyClassificationTypeId())).build();		
+				return ResponseEntity.created(new URI(requestURI + "/" + newCompanyClassificationType.getClassificationTypeId())).build();		
 			} catch( Exception e ) {
 				return ResponseEntity.badRequest().build();
 			}
@@ -109,7 +109,7 @@ public class CompanyClassificationTypeController {
 	
 	private Resource<CompanyClassificationType> getCompanyClassificationTypeResource(CompanyClassificationType a) {
 	    Resource<CompanyClassificationType> resource = new Resource<CompanyClassificationType>(a);
-	    resource.add(linkTo(methodOn(CompanyClassificationTypeController.class).getCompanyClassificationType(a.getCompanyClassificationTypeId())).withSelfRel());
+	    resource.add(linkTo(methodOn(CompanyClassificationTypeController.class).getCompanyClassificationType(a.getClassificationTypeId())).withSelfRel());
 	    return resource;
 	}
 

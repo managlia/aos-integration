@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.CompanyClassificationTypeRepository;
+import com.yeti.core.repository.types.CompanyClassificationTypeRepository;
 import com.yeti.model.company.CompanyClassificationType;
 import com.yeti.model.util.Batch;
 

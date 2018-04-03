@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.action.repository.ConversationRepository;
+import com.yeti.core.repository.action.ConversationRepository;
 import com.yeti.model.action.Conversation;
 import com.yeti.model.util.Batch;
 

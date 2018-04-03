@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.TagRepository;
+import com.yeti.core.repository.types.TagRepository;
 import com.yeti.model.general.Tag;
 import com.yeti.model.util.Batch;
 

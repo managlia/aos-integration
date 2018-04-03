@@ -64,7 +64,7 @@ public class ContactAddressTypeController {
 		if( newContactAddressType != null ) {
 			String requestURI = request.getRequestURI();
 			try {
-				return ResponseEntity.created(new URI(requestURI + "/" + newContactAddressType.getContactAddressTypeId())).build();		
+				return ResponseEntity.created(new URI(requestURI + "/" + newContactAddressType.getAddressTypeId())).build();		
 			} catch( Exception e ) {
 				return ResponseEntity.badRequest().build();
 			}
@@ -109,7 +109,7 @@ public class ContactAddressTypeController {
 	
 	private Resource<ContactAddressType> getContactAddressTypeResource(ContactAddressType a) {
 	    Resource<ContactAddressType> resource = new Resource<ContactAddressType>(a);
-	    resource.add(linkTo(methodOn(ContactAddressTypeController.class).getContactAddressType(a.getContactAddressTypeId())).withSelfRel());
+	    resource.add(linkTo(methodOn(ContactAddressTypeController.class).getContactAddressType(a.getAddressTypeId())).withSelfRel());
 	    return resource;
 	}
 

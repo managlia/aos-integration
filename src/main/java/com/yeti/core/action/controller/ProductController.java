@@ -64,7 +64,7 @@ public class ProductController {
 		if( newProduct != null ) {
 			String requestURI = request.getRequestURI();
 			try {
-				return ResponseEntity.created(new URI(requestURI + "/" + newProduct.getProductExternalId())).build();		
+				return ResponseEntity.created(new URI(requestURI + "/" + newProduct.getExternalId())).build();		
 			} catch( Exception e ) {
 				return ResponseEntity.badRequest().build();
 			}
@@ -109,7 +109,7 @@ public class ProductController {
 
 	private Resource<Product> getProductResource(Product a) {
 	    Resource<Product> resource = new Resource<Product>(a);
-	    resource.add(linkTo(methodOn(ProductController.class).getProduct(a.getProductExternalId())).withSelfRel());
+	    resource.add(linkTo(methodOn(ProductController.class).getProduct(a.getExternalId())).withSelfRel());
 	    return resource;
 	}
 

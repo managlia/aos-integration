@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.ScopeTypeRepository;
+import com.yeti.core.repository.types.ScopeTypeRepository;
 import com.yeti.model.general.ScopeType;
 import com.yeti.model.util.Batch;
 

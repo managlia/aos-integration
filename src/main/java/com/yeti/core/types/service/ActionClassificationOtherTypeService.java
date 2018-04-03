@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.ActionClassificationOtherTypeRepository;
+import com.yeti.core.repository.types.ActionClassificationOtherTypeRepository;
 import com.yeti.model.action.ActionClassificationOtherType;
 import com.yeti.model.util.Batch;
 

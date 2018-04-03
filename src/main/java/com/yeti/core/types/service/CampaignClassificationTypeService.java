@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.CampaignClassificationTypeRepository;
+import com.yeti.core.repository.types.CampaignClassificationTypeRepository;
 import com.yeti.model.campaign.CampaignClassificationType;
 import com.yeti.model.util.Batch;
 

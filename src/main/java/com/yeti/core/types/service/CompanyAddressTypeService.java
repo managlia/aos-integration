@@ -7,23 +7,34 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.CompanyAddressTypeRepository;
+import com.yeti.core.repository.types.CompanyAddressTypeRepository;
 import com.yeti.model.company.CompanyAddressType;
 import com.yeti.model.util.Batch;
 
 @Service
 public class CompanyAddressTypeService {
+
+	private void sleeper() {
+		try {
+			Thread.sleep( ((int)(Math.random()*10000)) );
+			
+		} catch( Exception e ) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Autowired
 	private CompanyAddressTypeRepository companyAddressTypeRepository;
 	
 	public List<CompanyAddressType> getAllCompanyAddressTypes() {
+		this.sleeper();
 		List<CompanyAddressType> companyAddressTypes = new ArrayList<CompanyAddressType>();
 		companyAddressTypeRepository.findAll().forEach(companyAddressTypes::add);
 		return companyAddressTypes;
 	}
 	
 	public CompanyAddressType getCompanyAddressType(String id) {
+		this.sleeper();
 		return companyAddressTypeRepository.findOne(id);
 	}
 	

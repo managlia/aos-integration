@@ -18,11 +18,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+import com.yeti.core.action.service.ActionService;
+import com.yeti.core.campaign.service.CampaignService;
+import com.yeti.core.company.service.CompanyService;
 import com.yeti.core.contact.service.ContactService;
+import com.yeti.model.action.Action;
+import com.yeti.model.campaign.Campaign;
+import com.yeti.model.company.Company;
 import com.yeti.model.contact.Contact;
 import com.yeti.model.util.Batch;
 
@@ -34,9 +41,26 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 
+	@Autowired
+	private CampaignService campaignService;
+
+	@Autowired
+	private ActionService actionService;
+	
 	@GetMapping
-	public ResponseEntity<List<Resource<Contact>>> getAllContacts() {
-		List<Contact> contacts = contactService.getAllContacts();
+	public ResponseEntity<List<Resource<Contact>>> getAllContacts(
+			@RequestParam(required=false) Integer companyId,
+			@RequestParam(required=false) Integer campaignId,
+			@RequestParam(required=false) Integer actionId
+	) {
+		List<Contact> contacts;
+		if( campaignId != null ) {
+			contacts = contactService.getContactsForCampaign(campaignId);
+		} else if( actionId != null ) {
+			contacts = contactService.getContactsForAction(actionId);
+		} else {
+			contacts = contactService.getAllContacts(companyId);
+		}
 		if( contacts != null ) {
 			List<Resource<Contact>> returnContacts = new ArrayList<Resource<Contact>>();
 			for( Contact contact : contacts ) {
@@ -49,7 +73,7 @@ public class ContactController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Resource<Contact>> getContact(@PathVariable Integer id) {
+	public ResponseEntity<Resource<Contact>> getContact(@PathVariable Integer id ) {
 		Contact contact = contactService.getContact(id);
 		if( contact == null ) {
 			return ResponseEntity.notFound().build();
@@ -60,7 +84,7 @@ public class ContactController {
 	
 	@PostMapping
 	public ResponseEntity<Resource<Contact>> addContact(@RequestBody Contact contact, HttpServletRequest request ) {
-		Contact newContact = contactService.addContact(contact);
+		Contact newContact = contactService.addNewContact(contact);
 		if( newContact != null ) {
 			String requestURI = request.getRequestURI();
 			try {
@@ -101,6 +125,71 @@ public class ContactController {
 			}
 		}
 	}
+	
+	@PutMapping("/{contactId}/Campaigns")
+	public ResponseEntity<List<Resource<Contact>>> addCampaignToContact(@PathVariable Integer contactId, @RequestBody Campaign campaign) {
+		Contact contact = contactService.getContact(contactId);
+		if( contact == null ) {
+			return ResponseEntity.notFound().build();
+		} else {
+			Contact updatedContact = contactService.addCampaignToContact(campaign.getCampaignId(), contactId);
+			if( updatedContact != null ) {
+				return ResponseEntity.accepted().build();		
+			} else {
+				return ResponseEntity.badRequest().build();
+			}
+		}
+	}	
+	
+	@DeleteMapping("/{contactId}/Campaigns/{campaignId}")
+	public ResponseEntity<Resource<Campaign>> removeCampaignToContact(@PathVariable Integer contactId, @PathVariable Integer campaignId) {
+		Contact contact = contactService.getContact(contactId);
+		Campaign campaign = campaignService.getCampaign(campaignId);
+		if( campaign == null || contact == null ) {
+			return ResponseEntity.notFound().build();
+		} else {
+			Contact updatedContact = contactService.removeCampaignFromContact(campaignId, contactId);
+			if( updatedContact != null ) {
+				return ResponseEntity.accepted().build();		
+			} else {
+				return ResponseEntity.badRequest().build();
+			}
+		}
+	}
+
+	
+	@PutMapping("/{contactId}/Actions")
+	public ResponseEntity<List<Resource<Contact>>> addActionToContact(@PathVariable Integer contactId, @RequestBody Action action) {
+		Contact contact = contactService.getContact(contactId);
+		if( contact == null ) {
+			return ResponseEntity.notFound().build();
+		} else {
+			Contact updatedContact = contactService.addActionToContact(action.getActionId(), contactId);
+			if( updatedContact != null ) {
+				return ResponseEntity.accepted().build();		
+			} else {
+				return ResponseEntity.badRequest().build();
+			}
+		}
+	}	
+	
+	@DeleteMapping("/{contactId}/Actions/{actionId}")
+	public ResponseEntity<Resource<Action>> removeActionToContact(@PathVariable Integer contactId, @PathVariable Integer actionId) {
+		Contact contact = contactService.getContact(contactId);
+		Action action = actionService.getAction(actionId);
+		if( action == null || contact == null ) {
+			return ResponseEntity.notFound().build();
+		} else {
+			Contact updatedContact = contactService.removeActionFromContact(actionId, contactId);
+			if( updatedContact != null ) {
+				return ResponseEntity.accepted().build();		
+			} else {
+				return ResponseEntity.badRequest().build();
+			}
+		}
+	}
+	
+	
 	
 	@PatchMapping
 	public void processBatchAction(@RequestBody Batch batch) {

@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.OrderStateTypeRepository;
+import com.yeti.core.repository.types.OrderStateTypeRepository;
 import com.yeti.model.action.OrderStateType;
 import com.yeti.model.util.Batch;
 

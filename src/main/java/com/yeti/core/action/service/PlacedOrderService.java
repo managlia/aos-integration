@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.action.repository.PlacedOrderRepository;
+import com.yeti.core.repository.action.PlacedOrderRepository;
 import com.yeti.model.action.PlacedOrder;
 import com.yeti.model.util.Batch;
 

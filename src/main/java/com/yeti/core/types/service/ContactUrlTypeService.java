@@ -7,7 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.types.repository.ContactUrlTypeRepository;
+import com.yeti.core.repository.types.ContactUrlTypeRepository;
 import com.yeti.model.contact.ContactUrlType;
 import com.yeti.model.util.Batch;
 

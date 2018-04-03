@@ -3,56 +3,5 @@
 
 
 	<persistence-unit name="aos-integration">
-		<class>com.yeti.model.action.Action</class>
-		<class>com.yeti.model.action.ActionAction</class>
-		<class>com.yeti.model.action.ActionAttachment</class>
-		<class>com.yeti.model.action.ActionClassificationOtherType</class>
-		<class>com.yeti.model.action.ActionClassificationType</class>
-		<class>com.yeti.model.action.ActionContact</class>
-		<class>com.yeti.model.action.ActionTag</class>
-		<class>com.yeti.model.general.Attachment</class>
-		<class>com.yeti.model.util.AuditLog</class>
-		<class>com.yeti.model.util.AuditLogDetail</class>
-		<class>com.yeti.model.util.AuditLogSectionType</class>
-		<class>com.yeti.model.util.AuditLogType</class>
-		<class>com.yeti.model.campaign.Campaign</class>
-		<class>com.yeti.model.campaign.CampaignAction</class>
-		<class>com.yeti.model.campaign.CampaignAttachment</class>
-		<class>com.yeti.model.campaign.CampaignClassificationType</class>
-		<class>com.yeti.model.campaign.CampaignCompany</class>
-		<class>com.yeti.model.campaign.CampaignContact</class>
-		<class>com.yeti.model.campaign.CampaignTag</class>
-		<class>com.yeti.model.general.Carrier</class>
-		<class>com.yeti.model.company.Company</class>
-		<class>com.yeti.model.company.CompanyAddress</class>
-		<class>com.yeti.model.company.CompanyAddressType</class>
-		<class>com.yeti.model.company.CompanyAttachment</class>
-		<class>com.yeti.model.company.CompanyClassificationType</class>
-		<class>com.yeti.model.company.CompanyTag</class>
-		<class>com.yeti.model.company.CompanyUrl</class>
-		<class>com.yeti.model.company.CompanyUrlType</class>
-		<class>com.yeti.model.contact.Contact</class>
-		<class>com.yeti.model.contact.ContactAddress</class>
-		<class>com.yeti.model.contact.ContactAddressType</class>
-		<class>com.yeti.model.contact.ContactAttachment</class>
-		<class>com.yeti.model.contact.ContactClassificationType</class>
-		<class>com.yeti.model.contact.ContactTag</class>
-		<class>com.yeti.model.contact.ContactTitleType</class>
-		<class>com.yeti.model.contact.ContactUrl</class>
-		<class>com.yeti.model.contact.ContactUrlType</class>
-		<class>com.yeti.model.action.Conversation</class>
-		<class>com.yeti.model.action.Email</class>
-		<class>com.yeti.model.host.HostCompany</class>
-		<class>com.yeti.model.action.PlacedOrder</class>
-		<class>com.yeti.model.action.OrderProduct</class>
-		<class>com.yeti.model.action.OrderStateType</class>
-		<class>com.yeti.model.action.Product</class>
-		<class>com.yeti.model.action.Reminder</class>
-		<class>com.yeti.model.report.Report</class>
-		<class>com.yeti.model.report.ReportDefinitionElement</class>
-		<class>com.yeti.model.report.ReportRepository</class>
-		<class>com.yeti.model.general.ScopeType</class>
-		<class>com.yeti.model.general.Tag</class>
-		<class>com.yeti.model.host.User</class>
 	</persistence-unit>
 </persistence>

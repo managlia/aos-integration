@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.yeti.core.action.repository.EmailRepository;
+import com.yeti.core.repository.action.EmailRepository;
 import com.yeti.model.action.Email;
 import com.yeti.model.util.Batch;
 
